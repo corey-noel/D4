@@ -5,7 +5,7 @@ def read_block_chain filename
   block_chain = []
   File.open(filename).each_with_index do |block, line|
     begin
-      block_chain << parse_block split_block block
+      block_chain << parse_block(split_block(block))
     rescue ArgumentError => err
       puts "Error on line #{line + 1}: #{err.message}"
       quit -1
@@ -29,9 +29,17 @@ def parse_block str_parts
   block_id = parse_id(str_parts[0])
   prev_hash = parse_hash(str_parts[1])
   transaction_list = parse_transaction_list(str_parts[2])
-  seconds, nanonseconds = parse_time_stamp(str_parts[3])
+  seconds, nanoseconds = parse_time_stamp(str_parts[3])
   block_hash = parse_hash(str_parts[4])
   # Block.new TODO
+
+  puts "#" * 20
+  puts block_id
+  puts prev_hash
+  puts transaction_list
+  puts seconds
+  puts nanoseconds
+  puts block_hash
 end
 
 # takes in a string representing the ID
@@ -68,7 +76,7 @@ def parse_time_stamp ts_in
   ts_parts = ts_in.split(".")
   raise ArgumentError("Timestamp requires 2 parts (got #{ts_parts.length}") unless ts_parts.length == 2
   begin
-    Integer(ts_parts[0]), Integer(ts_parts[1])
+    return Integer(ts_parts[0]), Integer(ts_parts[1])
   rescue ArgumentError
     raise ArgumentError("Could not parse timestamp")
   end
