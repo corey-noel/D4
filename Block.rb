@@ -42,9 +42,9 @@ class Block
   def verify_my_hash(my_hash)
     # work
   end
-  
+
   def verify_all
     # Call all verifications
   end
-  
+
 end
