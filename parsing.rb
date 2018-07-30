@@ -21,8 +21,7 @@ def read_block_chain(filename)
         cur = cur.nxt
       end
     rescue ArgumentError => error
-      puts "Parse error line #{line + 1}: #{error.message}"
-      return nil
+      raise ArgumentError, "Line #{line}: #{error.message}"
     end
   end
   head
@@ -54,7 +53,7 @@ end
 def parse_id(id_str)
   Integer(id_str)
 rescue ArgumentError
-  parsing_error('Could not parse ID to an integer')
+  parsing_error("Could not parse ID #{id_str} to an integer")
 end
 
 # takes in a string representation of a hash
@@ -63,7 +62,7 @@ end
 def parse_hash(hash_in)
   Integer(hash_in, 16)
 rescue ArgumentError
-  parsing_error('Could not parse hash')
+  parsing_error("Could not parse #{hash_in} to a hash")
 end
 
 # takes in a string representation of a transaction_list
@@ -79,7 +78,7 @@ end
 def parse_transaction(transaction_in)
   exp = /(\w*)>(\w*)\(([\d\.]*)\)/
   res = exp.match(transaction_in)
-  parsing_error("Could not parse transaction #{transaction_in}") if res.nil? || res.length != 4
+  parsing_error("Could not parse #{transaction_in} to a transaction") if res.nil? || res.length != 4
   begin
     Transaction.new(res[1], res[2], Integer(res[3]))
   rescue ArgumentError
@@ -101,5 +100,5 @@ def parse_time_stamp(ts_in)
 end
 
 def parsing_error(message)
-  raise ArgumentError message
+  raise ArgumentError, message
 end
