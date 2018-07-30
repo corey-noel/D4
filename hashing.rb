@@ -1,6 +1,6 @@
 require 'json'
 
-char_table_json = "data/char_table.json"
+char_table_json = 'data/char_table.json'
 HASHED_VALS = JSON.parse(File.read(char_table_json))
 
 # HASHING FUNCTIONS
