@@ -14,6 +14,7 @@ begin
   wallet.each { |address, amt| puts "#{address}: #{amt}" }
 rescue ArgumentError => e
   puts e.message
+  puts 'BLOCKCHAIN INVALID'
 rescue Errno::ENOENT
   puts "File #{ARGV[0]} does not exist"
 end
