@@ -7,7 +7,7 @@ HASHED_VALS = JSON.parse(File.read(char_table_json))
 # Performs a hash on the entire string
 # returns a DECIMAL INTEGER representation
 def calculate_hash(str_in, hash_method = :hash_lookup)
-  str_in.unpack('U*').map(&method(hash_method)).reduce(:+) % 65536
+  str_in.unpack('U*').map(&method(hash_method)).reduce(:+) % 65_536
 end
 
 # gets the hash value of a single char via lookup

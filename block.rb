@@ -42,7 +42,8 @@ class Block
   # first block transaction list
   # should have only one transaction
   def verify_first_transaction_list
-    block_err(0, "Invalid transaction length #{@transaction_list.length}, should be 1") unless @transaction_list.length == 1
+    return if @transaction_list.length == 1
+    block_err(0, "Invalid transaction length #{@transaction_list.length}, should be 1")
   end
 
   ##### ALL BLOCK VERIFICATIONS #####
@@ -74,7 +75,8 @@ class Block
     time = "#{@seconds}.#{@nanoseconds}"
     line = [@id, @prev_hash.to_s(16), transactions, time].join('|')
     expected = calculate_hash(line)
-    block_err(@id, "Invalid hash #{@block_hash.to_s(16)} for #{line}, should be #{expected.to_s(16)}") unless expected == @block_hash
+    return if expected == @block_hash
+    block_err(@id, "Invalid hash #{@block_hash.to_s(16)} for #{line}, should be #{expected.to_s(16)}")
   end
 
   # @nxt.id = @id + 1
@@ -86,7 +88,8 @@ class Block
 
   # @nxt.prev_hash == @block_hash
   def verify_prev_hash
-    block_err(@id + 1, "Invalid previous hash #{@nxt.prev_hash.to_s(16)}, should be #{@block_hash.to_s(16)}") unless @nxt.prev_hash == @block_hash
+    return if @nxt.prev_hash == @block_hash
+    block_err(@id + 1, "Invalid previous hash #{@nxt.prev_hash.to_s(16)}, should be #{@block_hash.to_s(16)}")
   end
 
   # @next.time > @time
@@ -100,7 +103,7 @@ class Block
   # transaction list length >= 1
   # last transaction is from system
   def verify_transaction_list
-    block_err(@id, "Transaction list length should be at least 1") unless @transaction_list.length >= 1
+    block_err(@id, 'Transaction list length should be at least 1') unless @transaction_list.length >= 1
     return if @transaction_list[-1].system?
     block_err(@id, "Invalid transaction src #{@transaction_list[-1].src}, final transaction should be from SYSTEM")
   end
@@ -118,7 +121,7 @@ class Block
   def apply_transactions(wallets)
     @transaction_list.each do |transaction|
       source_exists = transaction.system? || wallets.include?(transaction.src)
-      block_err(id, "Invalid transaction #{transaction.to_s}, source #{transaction.src} does not exist") unless source_exists
+      block_err(id, "Invalid transaction #{transaction}, source #{transaction.src} does not exist") unless source_exists
       if wallets.include?(transaction.dest)
         wallets[transaction.dest] += transaction.amt
       else
