@@ -33,7 +33,7 @@ end
 # raises an ArgumentError on the wrong number of elements
 def split_block(str_in)
   str_parts = str_in.split('|')
-  raise ArgumentError.new("Block requires 5 elements (got #{str_parts.length})") unless str_parts.length == 5
+  err("Block requires 5 elements (got #{str_parts.length})") unless str_parts.length == 5
   str_parts
 end
 
@@ -54,7 +54,7 @@ end
 def parse_id(id_str)
   Integer(id_str)
 rescue ArgumentError
-  raise ArgumentError.new('Could not parse ID to an integer')
+  err('Could not parse ID to an integer')
 end
 
 # takes in a string representation of a hash
@@ -63,16 +63,15 @@ end
 def parse_hash(hash_in)
   Integer(hash_in, 16)
 rescue ArgumentError
-  raise ArgumentError.new('Could not parse hash')
+  err('Could not parse hash')
 end
 
 # takes in a string representation of a transaction_list
 # returns a list of transaction objects
 # raises an ArgumentError for a lot of reasons
 def parse_transaction_list(transaction_list_in)
-  transaction_list_in.split(":").map{ |tran| parse_transaction tran }
+  transaction_list_in.split(':').map { |tran| parse_transaction tran }
 end
-
 
 # takes in a string representation of a transaction
 # returns a transaction object
@@ -80,11 +79,11 @@ end
 def parse_transaction(transaction_in)
   exp = /(\w*)>(\w*)\(([\d\.]*)\)/
   res = exp.match(transaction_in)
-  raise ArgumentError.new('Could not parse transaction #{transaction_in}') if res.nil? || res.length != 4
+  err("Could not parse transaction #{transaction_in}") if res.nil? || res.length != 4
   begin
     Transaction.new(res[1], res[2], Integer(res[3]))
-  rescue ArgumentError => e
-    raise ArgumentError.new('Could not parse transaction amount #{res[3]} to an integer')
+  rescue ArgumentError
+    err("Could not parse transaction amount #{res[3]} to an integer")
   end
 end
 
@@ -93,10 +92,14 @@ end
 # raises an ArgumentError on failure to parse
 def parse_time_stamp(ts_in)
   ts_parts = ts_in.split('.')
-  raise ArgumentError.new("Timestamp requires 2 parts (got #{ts_parts.length}") unless ts_parts.length == 2
+  err("Timestamp requires 2 parts (got #{ts_parts.length}") unless ts_parts.length == 2
   begin
     return Integer(ts_parts[0]), Integer(ts_parts[1])
   rescue ArgumentError
-    raise ArgumentError.new('Could not parse timestamp')
+    err('Could not parse timestamp')
   end
+end
+
+def err(message)
+  raise ArgumentError message
 end

@@ -1,3 +1,5 @@
+# Transaction class
+# represents an individual transaction between two users
 class Transaction
   attr_reader :src, :dest, :amt
 
@@ -6,7 +8,7 @@ class Transaction
     @dest = dest
     @amt = amt
 
-    @system = src == "SYSTEM"
+    @system = src == 'SYSTEM'
   end
 
   def system?
