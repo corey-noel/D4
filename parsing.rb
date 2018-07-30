@@ -1,3 +1,6 @@
+require_relative 'block.rb'
+require_relative 'transaction.rb'
+
 # opens and reads a file, parsing each line to a block
 def read_block_chain(filename)
   block_chain = []
@@ -5,7 +8,7 @@ def read_block_chain(filename)
     begin
       block_chain << parse_block(split_block(block))
     rescue ArgumentError => err
-      puts "Error on line #{line + 1}: #{err.message}"
+      puts "Parse error line #{line + 1}: #{err.message}"
       quit -1
     end
   end
@@ -29,15 +32,7 @@ def parse_block(str_parts)
   transaction_list = parse_transaction_list(str_parts[2])
   seconds, nanoseconds = parse_time_stamp(str_parts[3])
   block_hash = parse_hash(str_parts[4])
-  # Block.new TODO
-
-  puts '#' * 20
-  puts block_id
-  puts prev_hash
-  puts transaction_list
-  puts seconds
-  puts nanoseconds
-  puts block_hash
+  Block.new(block_id, prev_hash, transaction_list, seconds, nanoseconds, block_hash)
 end
 
 # takes in a string representing the ID
@@ -58,9 +53,22 @@ rescue ArgumentError
   raise ArgumentError('Could not parse hash')
 end
 
-# TODO
-def parse_transaction_list(transaction_in)
-  nil
+# takes in a string representation of a transaction_list
+# returns a list of transaction objects
+# raises an ArgumentError for a lot of reasons
+def parse_transaction_list(transaction_list_in)
+  transaction_list_in.split(":").map{ |tran| parse_transaction tran }
+end
+
+
+# takes in a string representation of a transaction
+# returns a transaction object
+# raises an ArgumentError for a lot of reasons
+def parse_transaction(transaction_in)
+  exp = /(\w*)>(\w*)\(([\d\.]*)\)/
+  res = exp.match(transaction_in)
+  raise ArgumentError('Could not parse transaction #{transaction_in}') unless res.length == 4
+  Transaction.new(res[1], res[2], res[3])
 end
 
 # takes in a string representation of a time_stamp
