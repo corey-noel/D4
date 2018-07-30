@@ -2,6 +2,6 @@
 
 #### Participants:
 
-* Corey Noel - con10@pitt.edu - corey-noel
+* Corey Noel (con10@pitt.edu - corey-noel)
 
 * Sam Sedivy (sls195@pitt.edu - Samtheman55)
