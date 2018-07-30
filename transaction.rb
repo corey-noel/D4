@@ -1,12 +1,12 @@
 class Transaction
-  attr_reader :from_name, :to_name, :amt
+  attr_reader :src, :dest, :amt
 
-  def initialize(from_name, to_name, amt)
-    @from_name = from_name
-    @to_name = to_name
+  def initialize(src, dest, amt)
+    @src = src
+    @dest = dest
     @amt = amt
 
-    @system = from_name == "SYSTEM"
+    @system = src == "SYSTEM"
   end
 
   def system?
@@ -14,6 +14,6 @@ class Transaction
   end
 
   def to_s
-    "#{@from_name}>#{@to_name}(#{@amt})"
+    "#{@src}>#{@dest}(#{@amt})"
   end
 end
