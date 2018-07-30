@@ -95,6 +95,7 @@ class Block
   end
 
   def verify_transaction_list
+    err(@id, "Transaction list should have at least 1 item") unless @transaction_list.length >= 1
     err(@id, "Final transaction should be from SYSTEM") unless @transaction_list[-1].system?
   end
 
