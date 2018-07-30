@@ -5,7 +5,7 @@ class ParsingTest < MiniTest::Test
 
   # tests that the length of the array returned by
   # split_block is correct
-  def test_split_block_length
+  def test_split_block_val
     in_str = "0|abcd|you>me(100)|100.200|sdfg"
     assert_equal 5, split_block(in_str).length
   end
@@ -96,11 +96,33 @@ class ParsingTest < MiniTest::Test
     assert_raises(ArgumentError) { parse_time_stamp(in_str) }
   end
 
-  def test_parse_block
+  def test_parse_timestamp_not_int
+    in_str = "1b23.4567"
+    assert_raises(ArgumentError) { prase_time_stamp(in_str) }
+  end
 
+  def test_parse_block
+    in_arr = ["10", "abcd", "you>me(100)", "100.200", "1234"]
+    assert_instance_of(Block, parse_block(in_arr))
+  end
+
+  def test_parse_block_wrong_length
+    in_arr = ["10", "abcd", "you>me(100)", "100.200"]
+    assert_raises(ArgumentError) { parse_block(in_arr) }
   end
 
   def test_parse_block_invalid
+    in_arr = ["10", "abcd", "?????", "100.200", "1234"]
+    assert_raises(ArgumentError) { parse_block(in_arr) }
+  end
 
+  def test_read_block_chain_valid
+    filename = "test_files/sample.txt"
+    assert_instance_of(Block, read_block_chain(filename))
+  end
+
+  def test_read_block_chain_invalid
+    filename = "test_files/bad_transaction_syntax.txt"
+    assert_raises(ArgumentError) { read_block_chain(filename) }
   end
 end
