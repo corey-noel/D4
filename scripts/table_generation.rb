@@ -1,10 +1,4 @@
-require_relative 'verifier.rb'
+require_relative '../hashing.rb'
+require 'json'
 
-hashed_vals = []
-(0..255).each do |char|
-  hashed_vals << hash_char_val(char) % 65536
-end
-
-puts "HASHED_VALS = ["
-puts hashed_vals.join(",\n")
-puts "]"
+puts JSON.generate((0..255).map { |char| hash_char_val(char) % 65536 })

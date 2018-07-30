@@ -20,8 +20,8 @@ def read_block_chain(filename)
         cur.nxt = new_block
         cur = cur.nxt
       end
-    rescue ArgumentError => err
-      puts "Parse error line #{line + 1}: #{err.message}"
+    rescue ArgumentError => error
+      puts "Parse error line #{line + 1}: #{error.message}"
       return nil
     end
   end
@@ -33,7 +33,7 @@ end
 # raises an ArgumentError on the wrong number of elements
 def split_block(str_in)
   str_parts = str_in.split('|')
-  err("Block requires 5 elements (got #{str_parts.length})") unless str_parts.length == 5
+  parsing_error("Block requires 5 elements (got #{str_parts.length})") unless str_parts.length == 5
   str_parts
 end
 
@@ -54,7 +54,7 @@ end
 def parse_id(id_str)
   Integer(id_str)
 rescue ArgumentError
-  err('Could not parse ID to an integer')
+  parsing_error('Could not parse ID to an integer')
 end
 
 # takes in a string representation of a hash
@@ -63,7 +63,7 @@ end
 def parse_hash(hash_in)
   Integer(hash_in, 16)
 rescue ArgumentError
-  err('Could not parse hash')
+  parsing_error('Could not parse hash')
 end
 
 # takes in a string representation of a transaction_list
@@ -79,11 +79,11 @@ end
 def parse_transaction(transaction_in)
   exp = /(\w*)>(\w*)\(([\d\.]*)\)/
   res = exp.match(transaction_in)
-  err("Could not parse transaction #{transaction_in}") if res.nil? || res.length != 4
+  parsing_error("Could not parse transaction #{transaction_in}") if res.nil? || res.length != 4
   begin
     Transaction.new(res[1], res[2], Integer(res[3]))
   rescue ArgumentError
-    err("Could not parse transaction amount #{res[3]} to an integer")
+    parsing_error("Could not parse transaction amount #{res[3]} to an integer")
   end
 end
 
@@ -92,14 +92,14 @@ end
 # raises an ArgumentError on failure to parse
 def parse_time_stamp(ts_in)
   ts_parts = ts_in.split('.')
-  err("Timestamp requires 2 parts (got #{ts_parts.length}") unless ts_parts.length == 2
+  parsing_error("Timestamp requires 2 parts (got #{ts_parts.length}") unless ts_parts.length == 2
   begin
     return Integer(ts_parts[0]), Integer(ts_parts[1])
   rescue ArgumentError
-    err('Could not parse timestamp')
+    parsing_error('Could not parse timestamp')
   end
 end
 
-def err(message)
+def parsing_error(message)
   raise ArgumentError message
 end

@@ -1,4 +1,7 @@
-require_relative 'char_table.rb'
+require 'json'
+
+char_table_json = "data/char_table.json"
+HASHED_VALS = JSON.parse(File.read(char_table_json))
 
 # HASHING FUNCTIONS
 # Performs a hash on the entire string
