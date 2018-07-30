@@ -23,8 +23,6 @@ class Block
     verify_first_id
     verify_first_prev_hash
     verify_first_transaction_list
-
-    # TODO add first block transactions to dict
     verify_block({})
   end
 
@@ -39,9 +37,9 @@ class Block
   end
 
   # first block transaction list
-  # not sure what we need to check here
+  # should have only one transaction
   def verify_first_transaction_list
-    # TODO
+    err(0, "First transaction list should be 1 long") unless @transaction_list.length == 1
   end
 
 ##### ALL BLOCK VERIFICATIONS #####
@@ -50,7 +48,9 @@ class Block
   # called internally only
   def verify_block(wallets)
     # we always do these steps
-    # wallet amounts are all positive after they are applied
+    apply_transactions wallets
+    verify_transaction_list wallets
+    verify_positive_balances wallets
     verify_hash
 
     # we only do these steps when there is a nxt block
@@ -59,13 +59,13 @@ class Block
       verify_prev_hash
       verify_timestamp
 
-      @nxt.verify_block(wallets)
+      @nxt.verify_block wallets
     end
 
     wallets
   end
 
-  # @block_hash is what it is expected to be
+  # @block_hash matches calculated hash
   def verify_hash
     transactions = @transaction_list.join(":")
     time = "#{@seconds}.#{@nanoseconds}"
@@ -98,8 +98,26 @@ class Block
     # work
   end
 
-  def verify_nobody_has_negative_balance(wallets)
+  def verify_positive_balances(wallets)
     # work
+  end
+
+  # accepts a dictionary of wallets
+  # applies @transaction_list to wallets dictionary
+  # raises ArgumentError if source does not exist
+  def apply_transactions(wallets)
+    @transaction_list.each do |transaction|
+      source_exists = transaction.system? || wallets.include?(transaction.src)
+      err(id, "Transaction source #{transaction.src} does not exist") unless source_exists
+      if wallets.include?(transaction.dest)
+        wallets[transaction.dest] += transaction.amt
+      else
+        wallets[transaction.dest] = transaction.amt
+      end
+      if wallets.include? transaction.src
+        wallets[transaction.src] -= transaction.amt
+      end
+    end
   end
 end
 
