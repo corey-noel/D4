@@ -2,17 +2,30 @@ require_relative 'block.rb'
 require_relative 'transaction.rb'
 
 # opens and reads a file, parsing each line to a block
+# returns the head of the block_chain
 def read_block_chain(filename)
-  block_chain = []
+  head = nil
+  cur = head
+
+  # this process should be recursive!
+  # i will fix this later
+  # TODO
   File.open(filename).each_with_index do |block, line|
     begin
-      block_chain << parse_block(split_block(block))
+      new_block = parse_block(split_block(block))
+      if head.nil?
+        head = new_block
+        cur = new_block
+      else
+        cur.nxt = new_block
+        cur = cur.nxt
+      end
     rescue ArgumentError => err
       puts "Parse error line #{line + 1}: #{err.message}"
-      quit -1
+      return nil
     end
   end
-  block_chain
+  head
 end
 
 # takes in a string representation of a block
@@ -20,7 +33,7 @@ end
 # raises an ArgumentError on the wrong number of elements
 def split_block(str_in)
   str_parts = str_in.split('|')
-  raise ArgumentError("Block requires 5 elements (got #{str_parts.length})") unless str_parts.length == 5
+  raise ArgumentError.new("Block requires 5 elements (got #{str_parts.length})") unless str_parts.length == 5
   str_parts
 end
 
@@ -41,7 +54,7 @@ end
 def parse_id(id_str)
   Integer(id_str)
 rescue ArgumentError
-  raise ArgumentError('Could not parse ID to an integer')
+  raise ArgumentError.new('Could not parse ID to an integer')
 end
 
 # takes in a string representation of a hash
@@ -50,7 +63,7 @@ end
 def parse_hash(hash_in)
   Integer(hash_in, 16)
 rescue ArgumentError
-  raise ArgumentError('Could not parse hash')
+  raise ArgumentError.new('Could not parse hash')
 end
 
 # takes in a string representation of a transaction_list
@@ -67,7 +80,7 @@ end
 def parse_transaction(transaction_in)
   exp = /(\w*)>(\w*)\(([\d\.]*)\)/
   res = exp.match(transaction_in)
-  raise ArgumentError('Could not parse transaction #{transaction_in}') unless res.length == 4
+  raise ArgumentError.new('Could not parse transaction #{transaction_in}') if res.nil? || res.length != 4
   Transaction.new(res[1], res[2], res[3])
 end
 
@@ -76,10 +89,10 @@ end
 # raises an ArgumentError on failure to parse
 def parse_time_stamp(ts_in)
   ts_parts = ts_in.split('.')
-  raise ArgumentError("Timestamp requires 2 parts (got #{ts_parts.length}") unless ts_parts.length == 2
+  raise ArgumentError.new("Timestamp requires 2 parts (got #{ts_parts.length}") unless ts_parts.length == 2
   begin
     return Integer(ts_parts[0]), Integer(ts_parts[1])
   rescue ArgumentError
-    raise ArgumentError('Could not parse timestamp')
+    raise ArgumentError.new('Could not parse timestamp')
   end
 end
