@@ -49,7 +49,7 @@ class Block
   def verify_block(wallets)
     # we always do these steps
     apply_transactions wallets
-    verify_transaction_list wallets
+    verify_transaction_list
     verify_positive_balances wallets
     verify_hash
 
@@ -94,12 +94,14 @@ class Block
     err(@id + 1, "Timestamps out of order") unless chronological
   end
 
-  def verify_transaction_list(wallets)
-    # work
+  def verify_transaction_list
+    err(@id, "Final transaction should be from SYSTEM") unless @transaction_list[-1].system?
   end
 
   def verify_positive_balances(wallets)
-    # work
+    wallets.each do |address, amt|
+      err(@id, "Address #{address} has negative amount (#{amt}) at end of block") unless amt >= 0
+    end
   end
 
   # accepts a dictionary of wallets
