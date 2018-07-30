@@ -1,4 +1,5 @@
 require_relative 'hashing.rb'
+require_relative 'parsing.rb'
 
 # Block class
 # represents a single block in our chain
@@ -16,6 +17,17 @@ class Block
     @block_hash = block_hash
 
     @nxt = nil
+  end
+
+  def self.build_chain(lines, depth=0)
+    return nil if lines.length <= depth
+    begin
+      new_block = parse_block(split_block(lines[depth]))
+    rescue ArgumentError => error
+      raise ArgumentError, "Line #{depth}: #{error.message}"
+    end
+    new_block.nxt = self.build_chain(lines, depth + 1)
+    new_block
   end
 
   ##### FIRST BLOCK VERIFICATIONS #####

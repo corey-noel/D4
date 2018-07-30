@@ -4,28 +4,7 @@ require_relative 'transaction.rb'
 # opens and reads a file, parsing each line to a block
 # returns the head of the block_chain
 def read_block_chain(filename)
-  head = nil
-  cur = head
-
-  # this process should be recursive!
-  # i will fix this later
-  # TODO
-  File.open(filename).each_with_index do |block, line|
-    begin
-      new_block = parse_block(split_block(block))
-      if head.nil?
-        head = new_block
-        cur = new_block
-      else
-        cur.nxt = new_block
-        cur = cur.nxt
-      end
-    rescue ArgumentError => error
-      puts "Parse error line #{line + 1}: #{error.message}"
-      return nil
-    end
-  end
-  head
+  Block.build_chain(File.open(filename).readlines)
 end
 
 # takes in a string representation of a block
@@ -68,14 +47,14 @@ end
 
 # takes in a string representation of a transaction_list
 # returns a list of transaction objects
-# raises an ArgumentError for a lot of reasons
+# raises an ArgumentError on failure to parse
 def parse_transaction_list(transaction_list_in)
   transaction_list_in.split(':').map { |tran| parse_transaction tran }
 end
 
 # takes in a string representation of a transaction
 # returns a transaction object
-# raises an ArgumentError for a lot of reasons
+# raises an ArgumentError on failure to parse
 def parse_transaction(transaction_in)
   exp = /(\w*)>(\w*)\(([\d\.]*)\)/
   res = exp.match(transaction_in)
@@ -101,5 +80,5 @@ def parse_time_stamp(ts_in)
 end
 
 def parsing_error(message)
-  raise ArgumentError message
+  raise ArgumentError, message
 end

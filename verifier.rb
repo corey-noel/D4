@@ -1,6 +1,11 @@
 require_relative 'parsing.rb'
 
-head = read_block_chain(ARGV[0])
+begin
+  head = read_block_chain(ARGV[0])
+rescue ArgumentError => e
+  puts e.message
+end
+
 exit(-1) if head.nil?
 
 begin
