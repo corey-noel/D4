@@ -81,7 +81,11 @@ def parse_transaction(transaction_in)
   exp = /(\w*)>(\w*)\(([\d\.]*)\)/
   res = exp.match(transaction_in)
   raise ArgumentError.new('Could not parse transaction #{transaction_in}') if res.nil? || res.length != 4
-  Transaction.new(res[1], res[2], res[3])
+  begin
+    Transaction.new(res[1], res[2], Integer(res[3]))
+  rescue ArgumentError => e
+    raise ArgumentError.new('Could not parse transaction amount #{res[3]} to an integer')
+  end
 end
 
 # takes in a string representation of a time_stamp
