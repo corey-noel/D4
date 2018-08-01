@@ -14,27 +14,27 @@
       <img src="./assets/0.10.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2018-08-01T13:57:40-04:00">2018-08-01T13:57:40-04:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2018-08-01T14:05:40-04:00">2018-08-01T14:05:40-04:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="green">93.66%</span></span>
+    (<span class="covered_percent"><span class="green">94.29%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         12.96
+         12.85
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>5</b> files in total.
-    <b>142</b> relevant lines. 
-    <span class="green"><b>133</b> lines covered</span> and
-    <span class="red"><b>9</b> lines missed </span>
+    <b>140</b> relevant lines. 
+    <span class="green"><b>132</b> lines covered</span> and
+    <span class="red"><b>8</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -52,12 +52,12 @@
       
       <tr>
         <td class="strong"><a href="#e9c2e63f8e7731b0a24d051391a13e3c3ac02bf4" class="src_link" title="block.rb">block.rb</a></td>
-        <td class="green strong">97.37 %</td>
-        <td>72</td>
-        <td>38</td>
-        <td>37</td>
-        <td>1</td>
-        <td>7.8</td>
+        <td class="green strong">100.0 %</td>
+        <td>68</td>
+        <td>36</td>
+        <td>36</td>
+        <td>0</td>
+        <td>7.1</td>
       </tr>
       
       <tr>
@@ -119,11 +119,11 @@
         <div class="source_table" id="e9c2e63f8e7731b0a24d051391a13e3c3ac02bf4">
   <div class="header">
     <h3>block.rb</h3>
-    <h4><span class="green">97.37 %</span> covered</h4>
+    <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>38</b> relevant lines. 
-      <span class="green"><b>37</b> lines covered</span> and
-      <span class="red"><b>1</b> lines missed.</span>
+      <b>36</b> relevant lines. 
+      <span class="green"><b>36</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
   
@@ -298,130 +298,130 @@
           <code class="ruby">    verify_first_transaction_list</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="29">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    verify_block({})</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="30">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="31">
+        <li class="never" data-hits="" data-linenumber="29">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="32">
+        <li class="covered" data-hits="1" data-linenumber="30">
+          <span class="hits">1</span>
           
+          <code class="ruby">    wallets = {}</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="31">
+          <span class="hits">1</span>
           
-          <code class="ruby">  # recursively verify the block_chain</code>
+          <code class="ruby">    wallets.default = 0</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="32">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    verify_block(wallets)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="33">
           
           
-          <code class="ruby">  # wallets is a dictionary of amounts of billcoin each individual has</code>
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="34">
           
           
-          <code class="ruby">  # called internally only</code>
+          <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="35">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="35">
           
-          <code class="ruby">  def verify_block(wallets)</code>
+          
+          <code class="ruby">  # recursively verify the block_chain</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="36">
           
           
+          <code class="ruby">  # wallets is a dictionary of amounts of billcoin each individual has</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="37">
+          
+          
+          <code class="ruby">  # called internally only</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="38">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def verify_block(wallets)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="39">
+          
+          
           <code class="ruby">    # we always do these steps</code>
-        </li>
-      
-        <li class="covered" data-hits="4" data-linenumber="37">
-          <span class="hits">4</span>
-          
-          <code class="ruby">    apply_transactions wallets</code>
-        </li>
-      
-        <li class="covered" data-hits="4" data-linenumber="38">
-          <span class="hits">4</span>
-          
-          <code class="ruby">    verify_transaction_list</code>
-        </li>
-      
-        <li class="covered" data-hits="4" data-linenumber="39">
-          <span class="hits">4</span>
-          
-          <code class="ruby">    verify_positive_balances wallets</code>
         </li>
       
         <li class="covered" data-hits="4" data-linenumber="40">
           <span class="hits">4</span>
           
-          <code class="ruby">    verify_hash</code>
+          <code class="ruby">    apply_transactions wallets</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="41">
+        <li class="covered" data-hits="4" data-linenumber="41">
+          <span class="hits">4</span>
           
-          
-          <code class="ruby"></code>
+          <code class="ruby">    verify_transaction_list</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="42">
+        <li class="covered" data-hits="4" data-linenumber="42">
+          <span class="hits">4</span>
           
-          
-          <code class="ruby">    # we only do these steps when there is a nxt block</code>
+          <code class="ruby">    verify_positive_balances wallets</code>
         </li>
       
         <li class="covered" data-hits="4" data-linenumber="43">
           <span class="hits">4</span>
           
-          <code class="ruby">    unless @nxt.nil?</code>
+          <code class="ruby">    verify_hash</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="44">
-          <span class="hits">2</span>
-          
-          <code class="ruby">      verify_id</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="45">
-          <span class="hits">2</span>
-          
-          <code class="ruby">      verify_prev_hash</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="46">
-          <span class="hits">2</span>
-          
-          <code class="ruby">      verify_timestamp</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="47">
+        <li class="never" data-hits="" data-linenumber="44">
           
           
           <code class="ruby"></code>
         </li>
       
+        <li class="never" data-hits="" data-linenumber="45">
+          
+          
+          <code class="ruby">    # we only do these steps when there is a nxt block</code>
+        </li>
+      
+        <li class="covered" data-hits="4" data-linenumber="46">
+          <span class="hits">4</span>
+          
+          <code class="ruby">    unless @nxt.nil?</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="47">
+          <span class="hits">2</span>
+          
+          <code class="ruby">      verify_id</code>
+        </li>
+      
         <li class="covered" data-hits="2" data-linenumber="48">
           <span class="hits">2</span>
           
-          <code class="ruby">      @nxt.verify_block wallets</code>
+          <code class="ruby">      verify_prev_hash</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="49">
+        <li class="covered" data-hits="2" data-linenumber="49">
+          <span class="hits">2</span>
           
-          
-          <code class="ruby">    end</code>
+          <code class="ruby">      verify_timestamp</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="50">
@@ -430,16 +430,16 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="51">
-          <span class="hits">4</span>
+        <li class="covered" data-hits="2" data-linenumber="51">
+          <span class="hits">2</span>
           
-          <code class="ruby">    wallets</code>
+          <code class="ruby">      @nxt.verify_block wallets</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="52">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby">    end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="53">
@@ -448,115 +448,91 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="54">
+        <li class="covered" data-hits="4" data-linenumber="54">
+          <span class="hits">4</span>
           
-          
-          <code class="ruby">  # accepts a dictionary of wallets</code>
+          <code class="ruby">    wallets</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="55">
           
           
-          <code class="ruby">  # applies @transaction_list to wallets dictionary</code>
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="56">
           
           
-          <code class="ruby">  # verifies source exists</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="57">
           
           
+          <code class="ruby">  # accepts a dictionary of wallets</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="58">
+          
+          
+          <code class="ruby">  # applies @transaction_list to wallets dictionary</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="59">
+          
+          
+          <code class="ruby">  # verifies source exists</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="60">
+          
+          
           <code class="ruby">  # currently the slowest method in program</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="58">
+        <li class="covered" data-hits="1" data-linenumber="61">
           <span class="hits">1</span>
           
           <code class="ruby">  def apply_transactions(wallets)</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="59">
+        <li class="covered" data-hits="5" data-linenumber="62">
           <span class="hits">5</span>
           
           <code class="ruby">    @transaction_list.each do |transaction|</code>
         </li>
       
-        <li class="covered" data-hits="15" data-linenumber="60">
+        <li class="covered" data-hits="15" data-linenumber="63">
           <span class="hits">15</span>
           
-          <code class="ruby">      source_exists = transaction.system? || wallets.include?(transaction.src)</code>
+          <code class="ruby">      wallets[transaction.dest] += transaction.amt</code>
         </li>
       
-        <li class="covered" data-hits="15" data-linenumber="61">
+        <li class="covered" data-hits="15" data-linenumber="64">
           <span class="hits">15</span>
           
-          <code class="ruby">      block_err(id, &quot;Invalid transaction #{transaction}, source #{transaction.src} does not exist&quot;) unless source_exists</code>
+          <code class="ruby">      wallets[transaction.src] -= transaction.amt unless transaction.system?</code>
         </li>
       
-        <li class="covered" data-hits="15" data-linenumber="62">
-          <span class="hits">15</span>
-          
-          <code class="ruby">      if wallets.include?(transaction.dest)</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="63">
-          
-          
-          <code class="ruby">        wallets[transaction.dest] += transaction.amt</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="64">
-          
-          
-          <code class="ruby">      else</code>
-        </li>
-      
-        <li class="covered" data-hits="15" data-linenumber="65">
-          <span class="hits">15</span>
-          
-          <code class="ruby">        wallets[transaction.dest] = transaction.amt</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="66">
-          
-          
-          <code class="ruby">      end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="67">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="15" data-linenumber="68">
-          <span class="hits">15</span>
-          
-          <code class="ruby">      wallets[transaction.src] -= transaction.amt if wallets.include? transaction.src</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="69">
+        <li class="never" data-hits="" data-linenumber="65">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="70">
+        <li class="covered" data-hits="5" data-linenumber="66">
           <span class="hits">5</span>
           
           <code class="ruby">    wallets</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="71">
+        <li class="never" data-hits="" data-linenumber="67">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="72">
+        <li class="never" data-hits="" data-linenumber="68">
           
           
           <code class="ruby">end</code>

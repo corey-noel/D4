@@ -26,7 +26,10 @@ class Block
     verify_first_id
     verify_first_prev_hash
     verify_first_transaction_list
-    verify_block({})
+
+    wallets = {}
+    wallets.default = 0
+    verify_block(wallets)
   end
 
   # recursively verify the block_chain
@@ -53,19 +56,10 @@ class Block
 
   # accepts a dictionary of wallets
   # applies @transaction_list to wallets dictionary
-  # verifies source exists
-  # currently the slowest method in program
   def apply_transactions(wallets)
     @transaction_list.each do |transaction|
-      source_exists = transaction.system? || wallets.include?(transaction.src)
-      block_err(id, "Invalid transaction #{transaction}, source #{transaction.src} does not exist") unless source_exists
-      if wallets.include?(transaction.dest)
-        wallets[transaction.dest] += transaction.amt
-      else
-        wallets[transaction.dest] = transaction.amt
-      end
-
-      wallets[transaction.src] -= transaction.amt if wallets.include? transaction.src
+      wallets[transaction.dest] += transaction.amt
+      wallets[transaction.src] -= transaction.amt unless transaction.system?
     end
     wallets
   end

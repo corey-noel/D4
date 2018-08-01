@@ -22,6 +22,7 @@ class BlockTest < MiniTest::Test
 
   def test_apply_transactions
     wallets = {"Henry" => 100}
+    wallets.default = 0
     expected = {"Henry" => 100, "George" => 100}
     assert_equal expected, @second.apply_transactions(wallets)
   end
@@ -33,6 +34,7 @@ class BlockTest < MiniTest::Test
 
   def test_verify_block
     wallets = {"Henry"=>100, "George"=>100}
+    wallets.default = 0
     expected = {"Henry"=>75, "George"=>83, "Amina"=>16, "James"=>4, "Cyrus"=>17, "Kublai"=>4, "Rana"=>1, "Wu"=>100}
     assert_equal expected, @third.verify_block(wallets)
   end
