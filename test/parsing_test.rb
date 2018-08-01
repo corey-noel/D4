@@ -98,7 +98,7 @@ class ParsingTest < MiniTest::Test
 
   def test_parse_timestamp_not_int
     in_str = "1b23.4567"
-    assert_raises(ArgumentError) { prase_time_stamp(in_str) }
+    assert_raises(ArgumentError) { parse_time_stamp(in_str) }
   end
 
   def test_parse_block

@@ -76,14 +76,10 @@ end
 # returns a transaction object
 # raises an ArgumentError for a lot of reasons
 def parse_transaction(transaction_in)
-  exp = /(\w*)>(\w*)\(([\d\.]*)\)/
+  exp = /(\w*)>(\w*)\(([\d]*)\)/
   res = exp.match(transaction_in)
   parsing_error("Could not parse #{transaction_in} to a transaction") if res.nil? || res.length != 4
-  begin
-    Transaction.new(res[1], res[2], Integer(res[3]))
-  rescue ArgumentError
-    parsing_error("Could not parse transaction amount #{res[3]} to an integer")
-  end
+  Transaction.new(res[1], res[2], Integer(res[3]))
 end
 
 # takes in a string representation of a time_stamp
