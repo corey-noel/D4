@@ -1,0 +1,6 @@
+source "https://rubygems.org"
+ruby "2.4.4"
+gem "flamegraph"
+gem "minitest"
+gem "simplecov"
+gem "fast_stack"
