@@ -14,18 +14,18 @@
       <img src="./assets/0.10.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2018-08-01T14:05:40-04:00">2018-08-01T14:05:40-04:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2018-08-01T19:49:06-04:00">2018-08-01T19:49:06-04:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="green">94.29%</span></span>
+    (<span class="covered_percent"><span class="green">100.0%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         12.85
+         24.73
        </span>
     </span> hits/line)
   </h2>
@@ -33,8 +33,8 @@
   <div>
     <b>5</b> files in total.
     <b>140</b> relevant lines. 
-    <span class="green"><b>132</b> lines covered</span> and
-    <span class="red"><b>8</b> lines missed </span>
+    <span class="green"><b>140</b> lines covered</span> and
+    <span class="red"><b>0</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -53,11 +53,11 @@
       <tr>
         <td class="strong"><a href="#e9c2e63f8e7731b0a24d051391a13e3c3ac02bf4" class="src_link" title="block.rb">block.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>68</td>
+        <td>66</td>
         <td>36</td>
         <td>36</td>
         <td>0</td>
-        <td>7.1</td>
+        <td>24.0</td>
       </tr>
       
       <tr>
@@ -67,7 +67,7 @@
         <td>9</td>
         <td>9</td>
         <td>0</td>
-        <td>40.0</td>
+        <td>50.7</td>
       </tr>
       
       <tr>
@@ -87,17 +87,17 @@
         <td>11</td>
         <td>11</td>
         <td>0</td>
-        <td>35.7</td>
+        <td>115.6</td>
       </tr>
       
       <tr>
         <td class="strong"><a href="#73a0eec689e345b17407b1d5696b6cf0a296fce1" class="src_link" title="verifying.rb">verifying.rb</a></td>
-        <td class="red strong">77.78 %</td>
+        <td class="green strong">100.0 %</td>
         <td>71</td>
         <td>36</td>
-        <td>28</td>
-        <td>8</td>
-        <td>2.1</td>
+        <td>36</td>
+        <td>0</td>
+        <td>4.3</td>
       </tr>
       
     </tbody>
@@ -196,38 +196,38 @@
           <code class="ruby">  def initialize(id, prev_hash, transaction_list, seconds, nanoseconds, block_hash)</code>
         </li>
       
-        <li class="covered" data-hits="24" data-linenumber="12">
-          <span class="hits">24</span>
+        <li class="covered" data-hits="110" data-linenumber="12">
+          <span class="hits">110</span>
           
           <code class="ruby">    @id = id</code>
         </li>
       
-        <li class="covered" data-hits="24" data-linenumber="13">
-          <span class="hits">24</span>
+        <li class="covered" data-hits="110" data-linenumber="13">
+          <span class="hits">110</span>
           
           <code class="ruby">    @prev_hash = prev_hash</code>
         </li>
       
-        <li class="covered" data-hits="24" data-linenumber="14">
-          <span class="hits">24</span>
+        <li class="covered" data-hits="110" data-linenumber="14">
+          <span class="hits">110</span>
           
           <code class="ruby">    @transaction_list = transaction_list</code>
         </li>
       
-        <li class="covered" data-hits="24" data-linenumber="15">
-          <span class="hits">24</span>
+        <li class="covered" data-hits="110" data-linenumber="15">
+          <span class="hits">110</span>
           
           <code class="ruby">    @seconds = seconds</code>
         </li>
       
-        <li class="covered" data-hits="24" data-linenumber="16">
-          <span class="hits">24</span>
+        <li class="covered" data-hits="110" data-linenumber="16">
+          <span class="hits">110</span>
           
           <code class="ruby">    @nanoseconds = nanoseconds</code>
         </li>
       
-        <li class="covered" data-hits="24" data-linenumber="17">
-          <span class="hits">24</span>
+        <li class="covered" data-hits="110" data-linenumber="17">
+          <span class="hits">110</span>
           
           <code class="ruby">    @block_hash = block_hash</code>
         </li>
@@ -238,8 +238,8 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="24" data-linenumber="19">
-          <span class="hits">24</span>
+        <li class="covered" data-hits="110" data-linenumber="19">
+          <span class="hits">110</span>
           
           <code class="ruby">    @nxt = nil</code>
         </li>
@@ -478,61 +478,49 @@
           <code class="ruby">  # applies @transaction_list to wallets dictionary</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="59">
-          
-          
-          <code class="ruby">  # verifies source exists</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="60">
-          
-          
-          <code class="ruby">  # currently the slowest method in program</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="61">
+        <li class="covered" data-hits="1" data-linenumber="59">
           <span class="hits">1</span>
           
           <code class="ruby">  def apply_transactions(wallets)</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="62">
-          <span class="hits">5</span>
+        <li class="covered" data-hits="7" data-linenumber="60">
+          <span class="hits">7</span>
           
           <code class="ruby">    @transaction_list.each do |transaction|</code>
         </li>
       
-        <li class="covered" data-hits="15" data-linenumber="63">
-          <span class="hits">15</span>
+        <li class="covered" data-hits="17" data-linenumber="61">
+          <span class="hits">17</span>
           
           <code class="ruby">      wallets[transaction.dest] += transaction.amt</code>
         </li>
       
-        <li class="covered" data-hits="15" data-linenumber="64">
-          <span class="hits">15</span>
+        <li class="covered" data-hits="17" data-linenumber="62">
+          <span class="hits">17</span>
           
           <code class="ruby">      wallets[transaction.src] -= transaction.amt unless transaction.system?</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="65">
+        <li class="never" data-hits="" data-linenumber="63">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="66">
-          <span class="hits">5</span>
+        <li class="covered" data-hits="7" data-linenumber="64">
+          <span class="hits">7</span>
           
           <code class="ruby">    wallets</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="67">
+        <li class="never" data-hits="" data-linenumber="65">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="68">
+        <li class="never" data-hits="" data-linenumber="66">
           
           
           <code class="ruby">end</code>
@@ -611,8 +599,8 @@
           <code class="ruby">def calculate_hash(str_in, hash_method = :hash_lookup)</code>
         </li>
       
-        <li class="covered" data-hits="7" data-linenumber="10">
-          <span class="hits">7</span>
+        <li class="covered" data-hits="9" data-linenumber="10">
+          <span class="hits">9</span>
           
           <code class="ruby">  str_in.unpack(&#39;U*&#39;).map(&amp;method(hash_method)).reduce(:+) % 65_536</code>
         </li>
@@ -641,8 +629,8 @@
           <code class="ruby">def hash_lookup(char)</code>
         </li>
       
-        <li class="covered" data-hits="341" data-linenumber="15">
-          <span class="hits">341</span>
+        <li class="covered" data-hits="435" data-linenumber="15">
+          <span class="hits">435</span>
           
           <code class="ruby">  HASHED_VALS[char]</code>
         </li>
@@ -1357,20 +1345,20 @@
           <code class="ruby">  def initialize(src, dest, amt)</code>
         </li>
       
-        <li class="covered" data-hits="88" data-linenumber="7">
-          <span class="hits">88</span>
+        <li class="covered" data-hits="306" data-linenumber="7">
+          <span class="hits">306</span>
           
           <code class="ruby">    @src = src</code>
         </li>
       
-        <li class="covered" data-hits="88" data-linenumber="8">
-          <span class="hits">88</span>
+        <li class="covered" data-hits="306" data-linenumber="8">
+          <span class="hits">306</span>
           
           <code class="ruby">    @dest = dest</code>
         </li>
       
-        <li class="covered" data-hits="88" data-linenumber="9">
-          <span class="hits">88</span>
+        <li class="covered" data-hits="306" data-linenumber="9">
+          <span class="hits">306</span>
           
           <code class="ruby">    @amt = amt</code>
         </li>
@@ -1381,8 +1369,8 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="88" data-linenumber="11">
-          <span class="hits">88</span>
+        <li class="covered" data-hits="306" data-linenumber="11">
+          <span class="hits">306</span>
           
           <code class="ruby">    @system = src == &#39;SYSTEM&#39;</code>
         </li>
@@ -1405,8 +1393,8 @@
           <code class="ruby">  def system?</code>
         </li>
       
-        <li class="covered" data-hits="21" data-linenumber="15">
-          <span class="hits">21</span>
+        <li class="covered" data-hits="25" data-linenumber="15">
+          <span class="hits">25</span>
           
           <code class="ruby">    @system</code>
         </li>
@@ -1429,8 +1417,8 @@
           <code class="ruby">  def to_s</code>
         </li>
       
-        <li class="covered" data-hits="15" data-linenumber="19">
-          <span class="hits">15</span>
+        <li class="covered" data-hits="18" data-linenumber="19">
+          <span class="hits">18</span>
           
           <code class="ruby">    &quot;#{@src}&gt;#{@dest}(#{@amt})&quot;</code>
         </li>
@@ -1455,11 +1443,11 @@
         <div class="source_table" id="73a0eec689e345b17407b1d5696b6cf0a296fce1">
   <div class="header">
     <h3>verifying.rb</h3>
-    <h4><span class="red">77.78 %</span> covered</h4>
+    <h4><span class="green">100.0 %</span> covered</h4>
     <div>
       <b>36</b> relevant lines. 
-      <span class="green"><b>28</b> lines covered</span> and
-      <span class="red"><b>8</b> lines missed.</span>
+      <span class="green"><b>36</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
   
@@ -1478,10 +1466,10 @@
           <code class="ruby">def verify_error(line, message)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="3">
+        <li class="covered" data-hits="14" data-linenumber="3">
+          <span class="hits">14</span>
           
-          
-          <code class="ruby">raise ArgumentError, &quot;Line #{line}: #{message}&quot;</code>
+          <code class="ruby">  raise ArgumentError, &quot;Line #{line}: #{message}&quot;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="4">
@@ -1520,38 +1508,38 @@
           <code class="ruby">  def verify_hash</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="10">
-          <span class="hits">4</span>
+        <li class="covered" data-hits="6" data-linenumber="10">
+          <span class="hits">6</span>
           
           <code class="ruby">    transactions = @transaction_list.join(&#39;:&#39;)</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="11">
-          <span class="hits">4</span>
+        <li class="covered" data-hits="6" data-linenumber="11">
+          <span class="hits">6</span>
           
           <code class="ruby">    time = &quot;#{@seconds}.#{@nanoseconds}&quot;</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="12">
-          <span class="hits">4</span>
+        <li class="covered" data-hits="6" data-linenumber="12">
+          <span class="hits">6</span>
           
           <code class="ruby">    line = [@id, @prev_hash.to_s(16), transactions, time].join(&#39;|&#39;)</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="13">
-          <span class="hits">4</span>
+        <li class="covered" data-hits="6" data-linenumber="13">
+          <span class="hits">6</span>
           
           <code class="ruby">    expected = calculate_hash(line)</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="14">
-          <span class="hits">4</span>
+        <li class="covered" data-hits="6" data-linenumber="14">
+          <span class="hits">6</span>
           
           <code class="ruby">    return if expected == @block_hash</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="15">
-          
+        <li class="covered" data-hits="1" data-linenumber="15">
+          <span class="hits">1</span>
           
           <code class="ruby">    verify_error(@id, &quot;Invalid hash #{@block_hash.to_s(16)} for #{line}, should be #{expected.to_s(16)}&quot;)</code>
         </li>
@@ -1580,20 +1568,20 @@
           <code class="ruby">  def verify_id</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="20">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="4" data-linenumber="20">
+          <span class="hits">4</span>
           
           <code class="ruby">    expected = @id + 1</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="21">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="4" data-linenumber="21">
+          <span class="hits">4</span>
           
           <code class="ruby">    actual = @nxt.id</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="22">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="4" data-linenumber="22">
+          <span class="hits">4</span>
           
           <code class="ruby">    verify_error(expected, &quot;Invalid block number #{actual}, should be #{expected}&quot;) unless expected == actual</code>
         </li>
@@ -1622,14 +1610,14 @@
           <code class="ruby">  def verify_prev_hash</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="27">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="4" data-linenumber="27">
+          <span class="hits">4</span>
           
           <code class="ruby">    return if @nxt.prev_hash == @block_hash</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="28">
-          
+        <li class="covered" data-hits="1" data-linenumber="28">
+          <span class="hits">1</span>
           
           <code class="ruby">    verify_error(@id + 1, &quot;Invalid previous hash #{@nxt.prev_hash.to_s(16)}, should be #{@block_hash.to_s(16)}&quot;)</code>
         </li>
@@ -1658,26 +1646,26 @@
           <code class="ruby">  def verify_timestamp</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="33">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="11" data-linenumber="33">
+          <span class="hits">11</span>
           
           <code class="ruby">    return if @nxt.seconds &gt; @seconds || (@nxt.seconds == @seconds &amp;&amp; @nxt.nanoseconds &gt; @nanoseconds)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="34">
-          
+        <li class="covered" data-hits="5" data-linenumber="34">
+          <span class="hits">5</span>
           
           <code class="ruby">    prev_ts = &quot;#{@seconds}.#{@nanoseconds}&quot;</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="35">
-          
+        <li class="covered" data-hits="5" data-linenumber="35">
+          <span class="hits">5</span>
           
           <code class="ruby">    new_ts = &quot;#{@nxt.seconds}.#{@nxt.nanoseconds}&quot;</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="36">
-          
+        <li class="covered" data-hits="5" data-linenumber="36">
+          <span class="hits">5</span>
           
           <code class="ruby">    verify_error(@id + 1, &quot;Invalid previous timestamp #{prev_ts} &gt;= new timestamp #{new_ts}&quot;)</code>
         </li>
@@ -1712,20 +1700,20 @@
           <code class="ruby">  def verify_transaction_list</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="42">
-          <span class="hits">4</span>
+        <li class="covered" data-hits="7" data-linenumber="42">
+          <span class="hits">7</span>
           
           <code class="ruby">    verify_error(@id, &#39;Transaction list length should be at least 1&#39;) unless @transaction_list.length &gt;= 1</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="43">
-          <span class="hits">4</span>
+        <li class="covered" data-hits="6" data-linenumber="43">
+          <span class="hits">6</span>
           
           <code class="ruby">    return if @transaction_list[-1].system?</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="44">
-          
+        <li class="covered" data-hits="1" data-linenumber="44">
+          <span class="hits">1</span>
           
           <code class="ruby">    verify_error(@id, &quot;Invalid transaction src #{@transaction_list[-1].src}, final transaction should be from SYSTEM&quot;)</code>
         </li>
@@ -1754,14 +1742,14 @@
           <code class="ruby">  def verify_positive_balances(wallets)</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="49">
-          <span class="hits">4</span>
+        <li class="covered" data-hits="7" data-linenumber="49">
+          <span class="hits">7</span>
           
           <code class="ruby">    wallets.each do |address, amt|</code>
         </li>
       
-        <li class="covered" data-hits="19" data-linenumber="50">
-          <span class="hits">19</span>
+        <li class="covered" data-hits="25" data-linenumber="50">
+          <span class="hits">25</span>
           
           <code class="ruby">      verify_error(@id, &quot;Invalid block, address #{address} has #{amt} billcoins&quot;) unless amt &gt;= 0</code>
         </li>
@@ -1802,8 +1790,8 @@
           <code class="ruby">  def verify_first_id</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="57">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="3" data-linenumber="57">
+          <span class="hits">3</span>
           
           <code class="ruby">    verify_error(0, &quot;Invalid block number #{@id}, should be 0&quot;) unless @id.zero?</code>
         </li>
@@ -1832,8 +1820,8 @@
           <code class="ruby">  def verify_first_prev_hash</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="62">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="3" data-linenumber="62">
+          <span class="hits">3</span>
           
           <code class="ruby">    verify_error(0, &quot;Invalid previous hash #{@prev_hash.to_s(16)}, should be 0&quot;) unless @prev_hash.zero?</code>
         </li>
@@ -1868,14 +1856,14 @@
           <code class="ruby">  def verify_first_transaction_list</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="68">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="3" data-linenumber="68">
+          <span class="hits">3</span>
           
           <code class="ruby">    return if @transaction_list.length == 1</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="69">
-          
+        <li class="covered" data-hits="1" data-linenumber="69">
+          <span class="hits">1</span>
           
           <code class="ruby">    verify_error(0, &quot;Invalid transaction length #{@transaction_list.length}, should be 1&quot;)</code>
         </li>

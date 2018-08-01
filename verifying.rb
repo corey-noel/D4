@@ -1,6 +1,6 @@
 # error raising helper method
 def verify_error(line, message)
-raise ArgumentError, "Line #{line}: #{message}"
+  raise ArgumentError, "Line #{line}: #{message}"
 end
 
 class Block
