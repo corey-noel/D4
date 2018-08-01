@@ -1,6 +1,9 @@
 require 'simplecov'
 SimpleCov.coverage_dir('data/coverage')
-SimpleCov.start
+SimpleCov.start do
+  add_filter "/test/"
+  add_filter "/scripts/"
+end
 
 require 'minitest/autorun'
 require_relative 'parsing_test.rb'
