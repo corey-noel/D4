@@ -54,6 +54,7 @@ class Block
   # accepts a dictionary of wallets
   # applies @transaction_list to wallets dictionary
   # verifies source exists
+  # currently the slowest method in program
   def apply_transactions(wallets)
     @transaction_list.each do |transaction|
       source_exists = transaction.system? || wallets.include?(transaction.src)
@@ -66,5 +67,6 @@ class Block
 
       wallets[transaction.src] -= transaction.amt if wallets.include? transaction.src
     end
+    wallets
   end
 end

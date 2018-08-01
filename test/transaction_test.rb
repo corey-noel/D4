@@ -1,5 +1,4 @@
 require_relative '../transaction.rb'
-require 'minitest/autorun'
 
 class TransactionTest < MiniTest::Test
 

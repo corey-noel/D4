@@ -1,5 +1,4 @@
 require_relative '../hashing.rb'
-require 'minitest/autorun'
 
 class HashingTest < MiniTest::Test
 
