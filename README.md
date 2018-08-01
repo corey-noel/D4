@@ -12,6 +12,8 @@
 
 #### Running:
 
+Run all commands from root of project!
+
 ###### Install dependencies
 ```bundle install```
 
