@@ -1,4 +1,5 @@
 require 'simplecov'
+SimpleCov.coverage_dir('data/coverage')
 SimpleCov.start
 
 require 'minitest/autorun'
